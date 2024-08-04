@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Street View split-map-panes</title>
+    <script>
+
+      function initialize() {
+        const fenway = { lat: 4.338757, lng: 101.136707 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: fenway,
+          zoom: 14,
+        });
+        const panorama = new google.maps.StreetViewPanorama(
+          document.getElementById("pano"),
+          {
+            position: fenway,
+            pov: {
+              heading: 34,
+              pitch: 10,
+            },
+          }
+        );
+
+        map.setStreetView(panorama);
+      }
+
+      window.initialize = initialize;
+    </script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map,
+      #pano {
+        float: left;
+        height: 100%;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="pano"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL9_QpvxoQ0kic9bR0GBhnxq_EgLkzYAk&callback=initialize&v=weekly&solution_channel=GMP_CCS_streetview_v2"
+      defer
+    ></script>
+  </body>
+</html>
+    
